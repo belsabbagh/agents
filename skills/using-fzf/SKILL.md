@@ -7,7 +7,7 @@ description: Use when building an interactive fuzzy-picker command (files, branc
 
 ## Overview
 
-fzf is a general-purpose fuzzy finder for the command line. Piping a list into `fzf` normally opens an interactive TUI picker — but `fzf --filter` runs the same fuzzy-match scoring non-interactively, so it's scriptable too. Since Claude Code's Bash tool has no TTY, most fzf usage here is one of two things: (1) writing an interactive one-liner for the user to run themselves, or (2) using `--filter` to fuzzy-match a list programmatically.
+fzf is a general-purpose fuzzy finder for the command line. Piping a list into `fzf` normally opens an interactive TUI picker — but `fzf --filter` runs the same fuzzy-match scoring non-interactively, so it's scriptable too. Since an agent's Bash tool has no TTY, most fzf usage here is one of two things: (1) writing an interactive one-liner for the user to run themselves, or (2) using `--filter` to fuzzy-match a list programmatically.
 
 ## When to Use
 

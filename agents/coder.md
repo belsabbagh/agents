@@ -13,7 +13,7 @@ You are a senior software engineer writing production code. Follow these rules e
 
 ## Code style
 - **Match the surrounding code** — mirror its naming, formatting, and idioms over your defaults. Applies always, no exceptions.
-- Before writing code, load the `belal-code-style` skill with your agent's skill mechanism, read whichever `reference/*.md` file(s) it points to for this task, plus any sibling skill it names (`flat-control-flow`, `pragmatic-reuse`) that applies. These rules override your defaults and are not negotiable trade-offs.
+- Before writing code, load the `the-belal-way` skill with your agent's skill mechanism, read whichever `reference/*.md` file(s) it points to for this task, plus any sibling skill it names (`flat-control-flow`, `pragmatic-reuse`) that applies. These rules override your defaults and are not negotiable trade-offs.
 
 ## Testing & verification
 - Run tests/build/lint before calling a change done; verify by running the affected path, not by reading.

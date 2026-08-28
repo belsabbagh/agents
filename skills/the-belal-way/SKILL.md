@@ -1,9 +1,9 @@
 ---
-name: belal-code-style
+name: the-belal-way
 description: Use when writing, editing, refactoring, or reviewing non-trivial code — Belal's code-style and architecture standard covering error handling, module/file structure, design patterns, and comments. Always apply "match the surrounding code" first; load only the reference file(s) relevant to the current task.
 ---
 
-# Belal's Code Style
+# The Belal Way
 
 Always applies, no matter the task: **match the surrounding code** — mirror its naming, formatting, and idioms over your defaults.
 

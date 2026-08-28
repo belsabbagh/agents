@@ -17,6 +17,7 @@ ALL_AGENTS=(opencode codex claude)
 DRY_RUN=0
 AGENTS=()
 SKILLS=()
+SKILLS_EXPLICIT=0
 
 die() { printf 'uninstall: error: %s\n' "$*" >&2; exit 1; }
 
@@ -27,6 +28,7 @@ while [ $# -gt 0 ]; do
       while [ $# -gt 0 ] && [[ "$1" != -* ]]; do AGENTS+=("$1"); shift; done
       ;;
     -s|--skill|--skills)
+      SKILLS_EXPLICIT=1
       shift; [ $# -gt 0 ] && [[ "$1" != -* ]] || die "$1 needs at least one value"
       while [ $# -gt 0 ] && [[ "$1" != -* ]]; do SKILLS+=("$1"); shift; done
       ;;
@@ -72,17 +74,23 @@ unlink() {
 for a in "${AGENTS[@]}"; do
   home="$(agent_home "$a")"
   printf '== %s ==\n' "$a"
-  unlink "$home/$(instructions_name "$a")"
+  # An explicit --skills filter scopes the run to skills only; harness files
+  # (instructions, agents, hooks) are removed only on a full uninstall.
+  if [ "$SKILLS_EXPLICIT" -eq 0 ]; then
+    unlink "$home/$(instructions_name "$a")"
+  fi
   for s in "${SKILLS[@]}"; do
     unlink "$(skills_home "$a")/$s"
   done
-  if [ -d "$REPO_DIR/agents" ]; then
-    for f in "$REPO_DIR"/agents/*.md; do
-      [ -e "$f" ] || continue
-      unlink "$home/agents/$(basename "$f")"
-    done
+  if [ "$SKILLS_EXPLICIT" -eq 0 ]; then
+    if [ -d "$REPO_DIR/agents" ]; then
+      for f in "$REPO_DIR"/agents/*.md; do
+        [ -e "$f" ] || continue
+        unlink "$home/agents/$(basename "$f")"
+      done
+    fi
+    [ "$a" = "claude" ] && unlink "$home/hooks/block-nonrg-grep.sh"
   fi
-  [ "$a" = "claude" ] && unlink "$home/hooks/block-nonrg-grep.sh"
 done
 
 printf 'done.%s\n' "$([ "$DRY_RUN" -eq 1 ] && printf ' (dry-run — nothing changed)')"

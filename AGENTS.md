@@ -11,7 +11,7 @@ or reviewing non-trivial code, follow the "Mandatory code preflight" section bel
 For every non-trivial code-writing, code-modification, refactoring, or code-review task:
 
 1. Inspect the surrounding code for local conventions.
-2. Load `belal-code-style`.
+2. Load `the-belal-way`.
 3. Load any applicable specialized style skills:
    - `flat-control-flow`
    - `pragmatic-reuse`
@@ -70,7 +70,7 @@ Do not skip this preflight because the requested change appears straightforward.
 
 When explicitly asked to run a code-style canary (one skill or all):
 
-1. Load the named skill(s): `belal-code-style`, `flat-control-flow`,
+1. Load the named skill(s): `the-belal-way`, `flat-control-flow`,
    `pragmatic-reuse`. "All canaries" = all three.
 2. Find the canary value defined inside each skill.
 3. Return the value(s) exactly, one per skill.

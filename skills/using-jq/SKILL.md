@@ -88,8 +88,9 @@ Two separate reasons to reach for this, either one is enough on its own:
 
 **Infer the structure of a JSON file without reading or loading it whole:**
 ```bash
-jq --stream -n -f ~/.claude/skills/using-jq/scripts/infer-schema.jq file.json > schema.json
+jq --stream -n -f scripts/infer-schema.jq file.json > schema.json
 ```
+(`scripts/` is relative to this skill's own directory, wherever the skill is installed.)
 
 This merges schemas across every array element (numeric indexes collapse into a single `items` schema) and unions types seen for the same field (e.g. a field that's sometimes `null`, sometimes `string` → `"type": ["null", "string"]`). It's a **structural** inference, not full JSON Schema — no `required`, `enum`, `const`, string formats, or min/max bounds. Good enough to know what fields exist and how they nest before writing a real filter.
 
