@@ -39,6 +39,11 @@ Do not skip this preflight because the requested change appears straightforward.
 - Be concise; lead with the answer and a recommendation, not a survey.
 - Surface risks early. Reference code as `file_path:line`.
 
+## Factual accuracy
+- Before asserting a checkable factual claim (CLI flag, command behavior, version support, config key, date, default), verify it against the tool, doc, or source — not memory.
+- If you can't or won't check it, hedge it or label it unverifiable; never lend it a confident tone.
+- See the `ackchyually` skill for the gate, verdict vocabulary, and fact-check review mode.
+
 ## Command-line JSON processing
 
 - Use `jq` for inspecting, querying, filtering, mapping, and modifying JSON.
@@ -66,7 +71,7 @@ Do not skip this preflight because the requested change appears straightforward.
   `conda`, or `pipx` directly.
 - See the `using-uv` skill for detailed commands and common mistakes.
 
-## Code-style canary
+## Skill canaries
 
 When explicitly asked to run a code-style canary (one skill or all):
 
@@ -74,6 +79,9 @@ When explicitly asked to run a code-style canary (one skill or all):
    `pragmatic-reuse`. "All canaries" = all three.
 2. Find the canary value defined inside each skill.
 3. Return the value(s) exactly, one per skill.
+
+When explicitly asked for the fact-check canary, load `ackchyually` and return
+its canary value exactly.
 
 Do not guess, cache, or infer canary values. They are intentionally not defined here.
 Do not print canaries during normal work — this is an explicit diagnostic only.
