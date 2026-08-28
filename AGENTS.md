@@ -14,7 +14,6 @@ For every non-trivial code-writing, code-modification, refactoring, or code-revi
 2. Load `belal-code-style`.
 3. Load any applicable specialized style skills:
    - `flat-control-flow`
-   - `typescript-advanced-types`
    - `pragmatic-reuse`
 4. Only then design, write, or review the code.
 
@@ -72,7 +71,7 @@ Do not skip this preflight because the requested change appears straightforward.
 When explicitly asked to run a code-style canary (one skill or all):
 
 1. Load the named skill(s): `belal-code-style`, `flat-control-flow`,
-   `typescript-advanced-types`, `pragmatic-reuse`. "All canaries" = all four.
+   `pragmatic-reuse`. "All canaries" = all three.
 2. Find the canary value defined inside each skill.
 3. Return the value(s) exactly, one per skill.
 

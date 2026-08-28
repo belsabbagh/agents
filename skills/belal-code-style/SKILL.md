@@ -19,7 +19,6 @@ Beyond that, read only the reference file(s) relevant to what you're doing right
 ## Sibling skills — don't duplicate, invoke directly
 
 - Nested conditionals, if/else ladders, switch statements → `flat-control-flow`
-- TypeScript types, generics, `any` → `typescript-advanced-types`
 - Deciding whether to reuse, extend, or create a new helper/abstraction → `pragmatic-reuse`
 
 ## Adding a new rule later
