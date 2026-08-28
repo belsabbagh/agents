@@ -93,13 +93,13 @@ register_claude_hook() {
     return
   fi
   [ -f "$settings" ] || printf '{}\n' > "$settings"
+  if jq -e '(.hooks.PreToolUse // []) | tostring | contains("block-nonrg-grep")' "$settings" >/dev/null; then
+    printf '  already registered hook in %s\n' "$settings"
+    return
+  fi
   cp "$settings" "$settings.bak.$(date +%Y%m%d%H%M%S)"
   jq --arg cmd "$hook_cmd" '
-    .hooks.PreToolUse =
-      if ((.hooks.PreToolUse // []) | tostring | contains("block-nonrg-grep"))
-      then .hooks.PreToolUse
-      else (.hooks.PreToolUse // []) + [{"matcher":"Bash","hooks":[{"type":"command","command":$cmd,"timeout":10}]}]
-      end
+    .hooks.PreToolUse = (.hooks.PreToolUse // []) + [{"matcher":"Bash","hooks":[{"type":"command","command":$cmd,"timeout":10}]}]
   ' "$settings" > "$settings.tmp" && mv "$settings.tmp" "$settings"
   printf '  registered      hook in %s (backup alongside)\n' "$settings"
 }
