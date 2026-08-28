@@ -1,0 +1,10 @@
+# Architecture & Design
+
+- **Composition over inheritance** — use composition (delegating to contained objects) instead of class inheritance to share and vary behavior. Inheritance exposes internals and couples subclass to superclass; composition lets you swap behavior at runtime. Strategy, State, Bridge, and Decorator all follow this principle.
+- **Compose, don't cram** — design modules with a stable public interface and swappable internals. Use Strategy, Bridge, or plain function injection so behavior can be extended without modifying consumers.
+- **Hide internals, expose intent** — use Hide Delegate and the Law of Demeter: talk to your immediate neighbor, not its internals. A module's internal change should not ripple to its callers. See https://refactoring.guru/hide-delegate
+- **Open for extension, closed for modification** — new behavior should add new code, not alter existing. Use polymorphism/replace-conditional-with-polymorphism, not flag params or switch-on-type. See https://refactoring.guru/refactoring/techniques/dealing-with-generalization
+- **Depend on abstractions, not concretions** — modules should reference interfaces/contracts; concrete implementations are injected. This keeps modules overridable and testable without shotgun edits.
+- **Right-size modules** — Extract Class when one does two jobs; Inline Class when one does nothing. Keep modules cohesive but not monolithic: extract when unrelated concerns live together, inline when indirection adds no value. See https://refactoring.guru/extract-class
+- **Balance cohesion vs. coupling** — avoid both shotgun surgery (same change hits many files) and divergent change (one file changes for many reasons). If a change touches many modules, related behavior is scattered — consolidate. If a module has multiple reasons to change, split by responsibility. See https://refactoring.guru/smells/change-preventers
+- **Design-first thinking** — before writing any non-trivial code, pause to identify which design pattern (Strategy, State, Bridge, Command, Factory, etc.) fits the problem. Let the pattern guide the structure; don't bolt it on after the fact.
